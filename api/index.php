@@ -15,6 +15,7 @@ $txSecret = md5($mainKey . $streamName . $txTime);
 $baseURL = "https://livecdn.moeyy.cn/live/moeyy.m3u8";
 $authURL = $baseURL . "?txSecret=" . $txSecret . "&txTime=" . $txTime;
 
+$expirationTime = date("Y-m-d H:i:s", hexdec($timestamp) + $validTime);
 header("X-Expiration-Time: " . $expirationTime);
 
 // 执行HTTP 302重定向到鉴权后的URL
